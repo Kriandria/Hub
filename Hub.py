@@ -9,8 +9,11 @@ app = Flask(__name__)
 
 
 @app.route('/')
+def hello_world():
+    return 'Welcome!'
+
 @app.route('/url/<arg1>')
-def hello_world(arg1):
+def url(arg1):
 
     server = MinecraftServer.lookup(arg1)
     status = server.status()
