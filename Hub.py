@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 from mcstatus import MinecraftServer
 
 app = Flask(__name__)
@@ -9,11 +10,11 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
+def index():
     return 'Welcome!'
 
-@app.route('/url/<arg1>')
-def url(arg1):
+@app.route('/mc/<arg1>')
+def mc(arg1):
 
     server = MinecraftServer.lookup(arg1)
     status = server.status()
