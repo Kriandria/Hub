@@ -7,7 +7,15 @@
 </head>
 <body>
     <div class="container">
-    {% block content %}{%  endblock %}
+    <!-- header content section -->
+        <div class="row">
+            <div class="column-16">{% block header %}{%  endblock %}</div>
+        </div>
+
+    <!-- main content section -->
+        <div class="row">
+            <div class="column-16">{% block content %}{%  endblock %}</div>
+        <div>
     </div>
 </body>
 </html>

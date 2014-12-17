@@ -2,6 +2,30 @@
 
 {% block title %}{{ super() }} | Hub{% endblock %}
 
+{% block header %}
+    <div class="row">
+        <div class="column-8">
+              <h1 class="float-left">Sages of Twilight | Hub</h1>
+        </div>
+        <div class="column-8">
+            <div class="float-right">
+                <nav class="nav-responsive">
+                    <ul class="list-inline">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Staff</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-<h1> Sages of Twilight</h1>
+    <div class="row">
+        <div class="column-11"></div>
+        <div class="column-5"></div>
+    </div>
 {% endblock %}
