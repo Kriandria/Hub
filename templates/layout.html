@@ -2,8 +2,17 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="description" content="The place for all things Sages of Twilight" />
+	<meta name="author" content="Zachary Snyder" />
+
     <title>{% block title %}Sages of Twilight{% endblock %}</title>
+
     <link rel="stylesheet" href="/static/css/concise.css" />
+    <link rel="stylesheet" href="/static/css/app.css" />
 </head>
 <body>
     <div class="container">
@@ -17,5 +26,8 @@
             <div class="column-16">{% block content %}{%  endblock %}</div>
         <div>
     </div>
+
+    <script type="text/javascript" src="/static/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/concise.min.js"></script>
 </body>
 </html>
