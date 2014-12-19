@@ -80,27 +80,31 @@ small, .small {
   font-size: 0.75rem;
   line-height: 2; }
 
-.main {
-  position: relative;
-  height: 100%; }
-  .main:before, .main:after {
+.sidebar,
+.content {
+  position: relative; }
+  .sidebar:before, .sidebar:after,
+  .content:before,
+  .content:after {
     position: absolute;
     content: '';
     height: .5em;
     top: 0;
     left: 0;
     right: 0; }
-  .main:after {
+  .sidebar:after,
+  .content:after {
     top: auto;
     bottom: 0; }
-  .main:before {
-    background: linear-gradient(90deg, #0d0628 18.20366%, #9a348e 18.20366%, #9a348e 33.86168%, #da627d 33.86168%, #da627d 66.2011%, #fca17d 66.2011%, #fca17d 76.42944%, #f9dbbd 76.42944%); }
-  .main:after {
+  .sidebar:before,
+  .content:before {
+    background: linear-gradient(90deg, #0d0628 21.72254%, #9a348e 21.72254%, #9a348e 34.05284%, #da627d 34.05284%, #da627d 65.40765%, #fca17d 65.40765%, #fca17d 71.57175%, #f9dbbd 71.57175%); }
+  .sidebar:after,
+  .content:after {
     background: linear-gradient(90deg, #0d0628 20%, #9a348e 20%, #9a348e 40%, #da627d 40%, #da627d 60%, #fca17d 60%, #fca17d 80%, #f9dbbd 80%); }
 
 .main,
-.content,
-.sidebar {
+.content {
   min-height: 750px; }
 
 .main {
@@ -112,38 +116,38 @@ small, .small {
   z-index: 1;
   padding: 1em; }
 
-.btn-twilight,
-.btn-almost-twilight,
-.btn-neutral,
-.btn-light,
-.btn-bright {
+.twilight,
+.almost-twilight,
+.neutral,
+.light,
+.bright {
   margin-bottom: 5px;
   width: 100%; }
 
-.btn-twilight {
+.twilight {
   background: #0d0628; }
-  .btn-twilight:hover {
+  .twilight:hover {
     background: #1b0d54; }
 
-.btn-almost-twilight {
+.almost-twilight {
   background: #9a348e; }
-  .btn-almost-twilight:hover {
+  .almost-twilight:hover {
     background: #bf42b0; }
 
-.btn-neutral {
+.neutral {
   background: #da627d; }
-  .btn-neutral:hover {
+  .neutral:hover {
     background: #e48b9f; }
 
-.btn-light {
+.light {
   background: #fca17d; }
-  .btn-light:hover {
+  .light:hover {
     background: #fdc5af; }
 
-.btn-bright {
+.bright {
   background: #f9dbbd;
   color: #1B2021; }
-  .btn-bright:hover {
+  .bright:hover {
     background: #fdf5ec; }
 
 .minecraft {

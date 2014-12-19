@@ -10,6 +10,11 @@ $black: #1B2021;
 
 $gray_purple: #271F30;
 
+    // Minecraft Colors
+
+    $grass: #8fb339;
+    $dirt: #513b3c;
+
 @function color-diff($color-a, $color-b) {
   $hue: hue($color-a) - hue($color-b);
   $saturation: saturation($color-a) - saturation($color-b);
@@ -215,9 +220,10 @@ line-height: 2;
   @return linear-gradient($direction, call('_stripes-#{$type}-stops', $colors));
 }
 
-.main {
+.sidebar,
+.content {
   position: relative;
-  height: 100%;
+
 
 
   &:before,
@@ -256,8 +262,7 @@ line-height: 2;
 // Content
 
 .main,
-.content,
-.sidebar {
+.content {
   min-height:750px;
 }
 .main {
@@ -272,41 +277,41 @@ line-height: 2;
 
 // Pretty buttons CSS
 
-.btn-twilight,
-.btn-almost-twilight,
-.btn-neutral,
-.btn-light,
-.btn-bright {
+.twilight,
+.almost-twilight,
+.neutral,
+.light,
+.bright {
   margin-bottom:5px;
   width:100%;
 
 }
 
-.btn-twilight {
+.twilight {
   background: $twilight;
     &:hover {
         background: lighten($twilight, 10%)
     }
 }
-.btn-almost-twilight {
+.almost-twilight {
   background: $almost_twilight;
     &:hover {
         background: lighten($almost_twilight, 10%)
     }
 }
-.btn-neutral {
+.neutral {
   background: $neutral;
     &:hover {
         background: lighten($neutral, 10%)
     }
 }
-.btn-light {
+.light {
   background: $light;
     &:hover {
         background: lighten($light, 10%)
     }
 }
-.btn-bright {
+.bright {
   background: $bright;
   color: $black;
     &:hover {
@@ -320,10 +325,10 @@ line-height: 2;
   padding:0.7em;
 }
 .grass {
-  background: #8fb339;
+  background: $grass;
 }
 .dirt {
-  background: #513b3c;
+  background: $dirt;
 }
 
 
