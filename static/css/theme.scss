@@ -1,5 +1,5 @@
 // Color specifications
-$twilight: #0d0628;
+$twilight: #1b0d54;
 $almost_twilight: #9a348e;
 $neutral: #da627d;
 $light: #fca17d;
@@ -37,7 +37,7 @@ $gray_purple: #271F30;
 
 html,
 body {
-  background-color: $white;
+  background-color: $black;
   font-family: 'source-sans-pro', 'Segoe UI', 'Myriad Pro', Helvetica, Tahoma, sans-serif;
   -webkit-transition: all .2s linear;
   -moz-transition: all .2s linear;
@@ -220,8 +220,8 @@ line-height: 2;
   @return linear-gradient($direction, call('_stripes-#{$type}-stops', $colors));
 }
 
-.sidebar,
-.content {
+
+.stripes_large {
   position: relative;
 
 
@@ -234,6 +234,7 @@ line-height: 2;
     top: 0;
     left: 0;
     right: 0;
+
   }
 
   &:after {
@@ -254,8 +255,11 @@ line-height: 2;
   &:after {
     $custom-stops: $twilight $almost_twilight $neutral $light $bright;
 
+
     // Custom stops
-    background: stripes($custom-stops, 90deg);
+    background: stripes($custom-stops, 90deg, $random: true);
+
+
   }
 }
 
@@ -274,6 +278,10 @@ line-height: 2;
   z-index: 1;
   padding: 1em;
 }
+.content {
+  background: $white;
+
+}
 
 // Pretty buttons CSS
 
@@ -282,41 +290,61 @@ line-height: 2;
 .neutral,
 .light,
 .bright {
-  margin-bottom:5px;
+  margin-bottom:14px;
   width:100%;
 
 }
 
 .twilight {
   background: $twilight;
+  border:solid 1px lighten($twilight, 18%);
     &:hover {
         background: lighten($twilight, 10%)
     }
+	-webkit-box-shadow: 0px 9px 0px darken($twilight, 4%);
+        -moz-box-shadow: 0px 9px 0px darken($twilight, 4%);
+        box-shadow: 0px 9px 0px darken($twilight, 4%);
 }
 .almost-twilight {
   background: $almost_twilight;
+  border:solid 1px lighten($almost_twilight, 18%);
     &:hover {
         background: lighten($almost_twilight, 10%)
     }
+	-webkit-box-shadow: 0px 9px 0px darken($almost_twilight, 4%);
+        -moz-box-shadow: 0px 9px 0px darken($almost_twilight, 4%);
+        box-shadow: 0px 9px 0px darken($almost_twilight, 4%);
 }
 .neutral {
   background: $neutral;
+  border:solid 1px lighten($neutral, 18%);
     &:hover {
         background: lighten($neutral, 10%)
     }
+	-webkit-box-shadow: 0px 9px 0px darken($neutral, 4%);
+        -moz-box-shadow: 0px 9px 0px darken($neutral, 4%);
+        box-shadow: 0px 9px 0px darken($neutral, 4%);
 }
 .light {
   background: $light;
+  border:solid 1px lighten($light, 18%);
     &:hover {
         background: lighten($light, 10%)
     }
+	-webkit-box-shadow: 0px 9px 0px darken($light, 4%);
+        -moz-box-shadow: 0px 9px 0px darken($light, 4%);
+        box-shadow: 0px 9px 0px darken($light, 4%);
 }
 .bright {
   background: $bright;
+  border:solid 1px lighten($bright, 18%);
   color: $black;
     &:hover {
         background: lighten($bright, 10%);
     }
+	-webkit-box-shadow: 0px 9px 0px darken($bright, 4%);
+        -moz-box-shadow: 0px 9px 0px darken($bright, 4%);
+        box-shadow: 0px 9px 0px darken($bright, 4%);
 }
 
 // Fun styles for minecraft information block

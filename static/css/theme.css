@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: #fcfcfc;
+  background-color: #1B2021;
   font-family: 'source-sans-pro', 'Segoe UI', 'Myriad Pro', Helvetica, Tahoma, sans-serif;
   -webkit-transition: all .2s linear;
   -moz-transition: all .2s linear;
@@ -80,28 +80,22 @@ small, .small {
   font-size: 0.75rem;
   line-height: 2; }
 
-.sidebar,
-.content {
+.stripes_large {
   position: relative; }
-  .sidebar:before, .sidebar:after,
-  .content:before,
-  .content:after {
+  .stripes_large:before, .stripes_large:after {
     position: absolute;
     content: '';
     height: .5em;
     top: 0;
     left: 0;
     right: 0; }
-  .sidebar:after,
-  .content:after {
+  .stripes_large:after {
     top: auto;
     bottom: 0; }
-  .sidebar:before,
-  .content:before {
-    background: linear-gradient(90deg, #0d0628 21.72254%, #9a348e 21.72254%, #9a348e 34.05284%, #da627d 34.05284%, #da627d 65.40765%, #fca17d 65.40765%, #fca17d 71.57175%, #f9dbbd 71.57175%); }
-  .sidebar:after,
-  .content:after {
-    background: linear-gradient(90deg, #0d0628 20%, #9a348e 20%, #9a348e 40%, #da627d 40%, #da627d 60%, #fca17d 60%, #fca17d 80%, #f9dbbd 80%); }
+  .stripes_large:before {
+    background: linear-gradient(90deg, #1b0d54 13.26505%, #9a348e 13.26505%, #9a348e 36.79489%, #da627d 36.79489%, #da627d 57.54147%, #fca17d 57.54147%, #fca17d 77.80051%, #f9dbbd 77.80051%); }
+  .stripes_large:after {
+    background: linear-gradient(90deg, #1b0d54 15.30001%, #9a348e 15.30001%, #9a348e 47.31901%, #da627d 47.31901%, #da627d 54.81386%, #fca17d 54.81386%, #fca17d 77.84021%, #f9dbbd 77.84021%); }
 
 .main,
 .content {
@@ -116,37 +110,60 @@ small, .small {
   z-index: 1;
   padding: 1em; }
 
+.content {
+  background: #fcfcfc; }
+
 .twilight,
 .almost-twilight,
 .neutral,
 .light,
 .bright {
-  margin-bottom: 5px;
+  margin-bottom: 14px;
   width: 100%; }
 
 .twilight {
-  background: #0d0628; }
+  background: #1b0d54;
+  border: solid 1px #3519a3;
+  -webkit-box-shadow: 0px 9px 0px #150a42;
+  -moz-box-shadow: 0px 9px 0px #150a42;
+  box-shadow: 0px 9px 0px #150a42; }
   .twilight:hover {
-    background: #1b0d54; }
+    background: #291480; }
 
 .almost-twilight {
-  background: #9a348e; }
+  background: #9a348e;
+  border: solid 1px #c960bd;
+  -webkit-box-shadow: 0px 9px 0px #8b2f80;
+  -moz-box-shadow: 0px 9px 0px #8b2f80;
+  box-shadow: 0px 9px 0px #8b2f80; }
   .almost-twilight:hover {
     background: #bf42b0; }
 
 .neutral {
-  background: #da627d; }
+  background: #da627d;
+  border: solid 1px #ecacbb;
+  -webkit-box-shadow: 0px 9px 0px #d6516f;
+  -moz-box-shadow: 0px 9px 0px #d6516f;
+  box-shadow: 0px 9px 0px #d6516f; }
   .neutral:hover {
     background: #e48b9f; }
 
 .light {
-  background: #fca17d; }
+  background: #fca17d;
+  border: solid 1px #fee2d7;
+  -webkit-box-shadow: 0px 9px 0px #fc9369;
+  -moz-box-shadow: 0px 9px 0px #fc9369;
+  box-shadow: 0px 9px 0px #fc9369; }
   .light:hover {
     background: #fdc5af; }
 
 .bright {
   background: #f9dbbd;
-  color: #1B2021; }
+  border: solid 1px white;
+  color: #1B2021;
+  -webkit-box-shadow: 0px 9px 0px #f7d1aa;
+  -moz-box-shadow: 0px 9px 0px #f7d1aa;
+  box-shadow: 0px 9px 0px #f7d1aa; }
   .bright:hover {
     background: #fdf5ec; }
 
