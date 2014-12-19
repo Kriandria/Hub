@@ -94,7 +94,7 @@ small, .small {
     top: auto;
     bottom: 0; }
   .main:before {
-    background: linear-gradient(90deg, #0d0628 16.09925%, #9a348e 16.09925%, #9a348e 36.0001%, #da627d 36.0001%, #da627d 57.31694%, #fca17d 57.31694%, #fca17d 79.54993%, #f9dbbd 79.54993%); }
+    background: linear-gradient(90deg, #0d0628 18.20366%, #9a348e 18.20366%, #9a348e 33.86168%, #da627d 33.86168%, #da627d 66.2011%, #fca17d 66.2011%, #fca17d 76.42944%, #f9dbbd 76.42944%); }
   .main:after {
     background: linear-gradient(90deg, #0d0628 20%, #9a348e 20%, #9a348e 40%, #da627d 40%, #da627d 60%, #fca17d 60%, #fca17d 80%, #f9dbbd 80%); }
 
@@ -147,6 +147,13 @@ small, .small {
     background: #fdf5ec; }
 
 .minecraft {
+  width: 100%;
+  padding: 0.7em; }
+
+.grass {
   background: #8fb339; }
+
+.dirt {
+  background: #513b3c; }
 
 /*# sourceMappingURL=theme.css.map */

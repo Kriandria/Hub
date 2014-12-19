@@ -316,7 +316,14 @@ line-height: 2;
 
 // Fun styles for minecraft information block
 .minecraft {
+  width:100%;
+  padding:0.7em;
+}
+.grass {
   background: #8fb339;
+}
+.dirt {
+  background: #513b3c;
 }
 
 
