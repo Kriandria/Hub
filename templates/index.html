@@ -3,7 +3,7 @@
 {% block title %}{{ super() }} | Hub{% endblock %}
 
 {% block header %}
-    <div class="row">
+    <div class="row header">
         <div class="column-10">
               <h1 class="float-left">Sages of Twilight | Hub</h1>
         </div>
@@ -25,7 +25,24 @@
 
 {% block content %}
     <div class="row">
-        <div class="column-11"></div>
-        <div class="column-5"></div>
+        <div class="main">
+            <div class="column-11 content">test</div>
+            <div class="column-5 sidebar">
+                <div>
+                    <ul class="list-unstyled ">
+                        <li><a class="btn btn-large btn-twilight" href="#">Home</a></li>
+                        <li><a class="btn btn-large btn-almost-twilight" href="#">About</a></li>
+                        <li><a class="btn btn-large btn-neutral" href="#">Staff</a></li>
+                        <li><a class="btn btn-large btn-light" href="#">Games</a></li>
+                        <li><a class="btn btn-large btn-bright" href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <ul class="list-unstyled">
+                        <li class="btn minecraft grass">Minecraft Network</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

@@ -10,7 +10,314 @@ $black: #1B2021;
 
 $gray_purple: #271F30;
 
-body {
-  background: $white;
-  color: $black;
+@function color-diff($color-a, $color-b) {
+  $hue: hue($color-a) - hue($color-b);
+  $saturation: saturation($color-a) - saturation($color-b);
+  $lightness: lightness($color-a) - lightness($color-b);
+
+  $function-hue: 'adjust-hue';
+  $function-saturation: if($saturation > 0, 'desaturate', 'saturate');
+  $function-lightness: if($lightness > 0, 'darken', 'lighten');
+
+  @return (
+    #{$function-hue}: -($hue),
+    #{$function-saturation}: abs($saturation),
+    #{$function-lightness}: abs($lightness),
+  );
 }
+
+
+// Begin Regular Styles
+
+
+html,
+body {
+  background-color: $white;
+  font-family: 'source-sans-pro', 'Segoe UI', 'Myriad Pro', Helvetica, Tahoma, sans-serif;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+}
+body::-webkit-scrollbar { width: 8px; }
+body::-webkit-scrollbar-track {
+  background: #eee;
+  border-radius: 5px;
+}
+body::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 5px;
+}
+
+/*
+* Typography
+*/
+p { line-height: 1.6; }
+.preview p { line-height: 1.5; }
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+color: #444;
+font-family: 'source-sans-pro', 'Segoe UI', 'Myriad Pro', Helvetica, Tahoma, sans-serif;
+}
+.preview h1,
+.preview h2,
+.preview h3,
+.preview h4,
+.preview h5,
+.preview h6 {
+color: #181818;
+font-family: "Georgia", "Times New Roman", serif;
+font-weight: normal;
+
+}
+h1, h2, h3,
+.h1, .h2, .h3 { font-weight: 200; }
+
+h4, h5, h6,
+.h4, .h5, .h6 { font-weight: 600; }
+.content h3,
+.content .h3 { font-weight: 600; }
+a:hover { text-decoration: none; }
+a,
+header.homepage a,
+nav.top-nav a,
+.sidebar .nav-vertical li a,
+footer p a,
+.features img,
+footer .line.list-inline li {
+-webkit-transition: all .2s linear;
+-moz-transition: all .2s linear;
+-ms-transition: all .2s linear;
+-o-transition: all .2s linear;
+transition: all .2s linear;
+}
+small, .small {
+font-size: 14px;
+font-size: 0.9rem;
+}
+.preview small,
+.preview .small {
+font-size: 12px;
+font-size: 0.75rem;
+line-height: 2;
+}
+
+// Custom random function
+// To allow a minimum value
+// ------------------------------------------------------------
+// @param $min: minimum value
+// @param $max: maximum value
+// ------------------------------------------------------------
+// @return random number
+
+@function rand($min, $max) {
+  @return random($max - $min) + $min;
+}
+
+// Private function for custom stops
+// ------------------------------------------------------------
+// @param $colors: list of color + associated stop
+//     ex: (red 10%, blue 50%, green 65%)
+// ------------------------------------------------------------
+// @return list to be used as a gradient
+
+@function _stripes-custom-stops($colors) {
+  $gradients: ();
+
+  @for $i from 1 to length($colors) {
+    @if length(nth($colors, $i)) > 1 {
+      $color: nth(nth($colors, $i), 1);
+      $stop:  nth(nth($colors, $i), 2);
+
+      $gradients: append($gradients, $color $stop, comma);
+      @if $i < length($colors) {
+        $gradients: append($gradients, nth(nth($colors, $i + 1), 1) $stop);
+      }
+    }
+
+    @else {
+      @warn '`#{nth($colors, $i)}` skipped because it is only one item long while it should be 2: (color, color-stop).';
+    }
+  }
+
+  @return $gradients;
+}
+
+// Private function for random stops
+// ------------------------------------------------------------
+// @param $colors: list of color
+//     ex: (red, blue, green)
+// ------------------------------------------------------------
+// @return two dimensional list
+
+@function _stripes-random-stops($colors) {
+  @if length(nth($colors, 1)) > 1 {
+    @return _stripes-custom-stops($colors);
+  }
+
+  $n: length($colors);
+  $gradients: ();
+  $variation: 10;
+  $median: 100 / $n;
+
+  @for $i from 1 to $n {
+    $stop: $median * $i;
+    $random: rand($stop - $variation, $stop + $variation) * 1%;
+    $gradients: append($gradients, nth($colors, $i) $random, comma);
+    @if $i < length($colors) {
+      $gradients: append($gradients, nth(nth($colors, $i + 1), 1) $random);
+    }
+  }
+
+  @return $gradients;
+}
+
+// Private function for equal stops
+// ------------------------------------------------------------
+// @param $colors: list of color
+//     ex: (red, blue, green)
+// ------------------------------------------------------------
+// @return two dimensional list
+
+@function _stripes-equal-stops($colors) {
+  $gradients: ();
+  $stops: 100% / length($colors);
+
+  // Loop through colors
+  @for $i from 1 to length($colors) {
+    $gradients: append($gradients, nth($colors, $i) $i * $stops, comma);
+    @if $i < length($colors) {
+      $gradients: append($gradients, nth($colors, $i + 1) $i * $stops);
+    }
+  }
+
+  // Return gradient
+  @return $gradients;
+}
+
+// Function turning a list of colors (and if specified stops)
+// into a stripes gradient
+// ------------------------------------------------------------
+// @param $colors: list of color or color + color stop
+//     ex: (red blue green)
+//     ex: (red 10%, blue 50%, green 65%)
+// @param $direction: gradient direction in keyword or degrees
+// @param $random: should color-stops be randomly generated
+// ------------------------------------------------------------
+// @return gradient
+
+@function stripes($colors, $direction: 90deg, $random: false) {
+  // If lonely color
+  @if length($colors) == 1 { @return $colors; }
+
+  // Else
+  $type: if($random, 'random', if(length(nth($colors, 1)) > 1, 'custom', 'equal'));
+  @return linear-gradient($direction, call('_stripes-#{$type}-stops', $colors));
+}
+
+.main {
+  position: relative;
+  height: 100%;
+
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+    height: .5em;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &:after {
+    top: auto;
+    bottom: 0;
+  }
+
+  &:before {
+    $equal-stops: $twilight $almost_twilight $neutral $light $bright;
+
+    // Equal stops
+    // background: stripes($equal-stops, $direction);
+
+    // Random stops
+    background: stripes($equal-stops, 90deg, $random: true);
+  }
+
+  &:after {
+    $custom-stops: $twilight $almost_twilight $neutral $light $bright;
+
+    // Custom stops
+    background: stripes($custom-stops, 90deg);
+  }
+}
+
+// Content
+
+.main,
+.content,
+.sidebar {
+  min-height:750px;
+}
+.main {
+  z-index: 0;
+  padding: 0.1em;
+}
+.content,
+.sidebar {
+  z-index: 1;
+  padding: 1em;
+}
+
+// Pretty buttons CSS
+
+.btn-twilight,
+.btn-almost-twilight,
+.btn-neutral,
+.btn-light,
+.btn-bright {
+  margin-bottom:5px;
+  width:100%;
+
+}
+
+.btn-twilight {
+  background: $twilight;
+    &:hover {
+        background: lighten($twilight, 10%)
+    }
+}
+.btn-almost-twilight {
+  background: $almost_twilight;
+    &:hover {
+        background: lighten($almost_twilight, 10%)
+    }
+}
+.btn-neutral {
+  background: $neutral;
+    &:hover {
+        background: lighten($neutral, 10%)
+    }
+}
+.btn-light {
+  background: $light;
+    &:hover {
+        background: lighten($light, 10%)
+    }
+}
+.btn-bright {
+  background: $bright;
+  color: $black;
+    &:hover {
+        background: lighten($bright, 10%);
+    }
+}
+
+// Fun styles for minecraft information block
+.minecraft {
+  background: #8fb339;
+}
+
+
+
