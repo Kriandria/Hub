@@ -1,4 +1,5 @@
 // Color specifications
+$night: #0d0628;
 $twilight: #1b0d54;
 $almost_twilight: #9a348e;
 $neutral: #da627d;
@@ -105,6 +106,14 @@ font-size: 0.9rem;
 font-size: 12px;
 font-size: 0.75rem;
 line-height: 2;
+}
+h1 {
+  color: $bright;
+  margin-bottom: 0px;
+}
+.header {
+  margin-top: 0.5em;
+  margin-bottom:.5em;
 }
 
 // Custom random function
@@ -263,6 +272,26 @@ line-height: 2;
   }
 }
 
+.striped_top {
+  position: relative;
+  &:before {
+    position: absolute;
+    content: '';
+    height: .5em;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  &:before {
+    $equal-stops: $twilight $almost_twilight $neutral $light $bright;
+    // Equal stops
+    // background: stripes($equal-stops, $direction);
+
+    // Random stops
+    background: stripes($equal-stops, 90deg, $random: true);
+  }
+}
+
 // Content
 
 .main,
@@ -279,7 +308,8 @@ line-height: 2;
   padding: 1em;
 }
 .content {
-  background: $white;
+  background: $night;
+  color: $white;
 
 }
 
@@ -294,7 +324,22 @@ line-height: 2;
   width:100%;
 
 }
-
+.night {
+  background: $night;
+  color: $white;
+  padding: 2em;
+  padding-bottom: 0.7em;
+  border:solid 1px lighten($night, 18%);
+  border-top: 0px;
+/*
+    &:hover {
+        background: lighten($night, 10%)
+    }
+*/
+	-webkit-box-shadow: 0px 9px 0px darken($night, 4%);
+        -moz-box-shadow: 0px 9px 0px darken($night, 4%);
+        box-shadow: 0px 9px 0px darken($night, 4%);
+}
 .twilight {
   background: $twilight;
   border:solid 1px lighten($twilight, 18%);
@@ -359,5 +404,72 @@ line-height: 2;
   background: $dirt;
 }
 
+// Breadcrumbs
 
+.breadcrumbs {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.84615;
+  margin: 12px 0;
+  padding: 5px 15px 5px 0;
+}
+
+.breadcrumbs li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.breadcrumbs li:last-child { margin-right: 0px; }
+
+.breadcrumbs li:after {
+  content: "/";
+  color: #ccc;
+  padding-left: 12px;
+  vertical-align: middle;
+}
+
+.breadcrumbs li:last-child { color: #999; }
+
+.breadcrumbs li:last-child a { color: #999; }
+
+.breadcrumbs li:last-child:after { content: ""; }
+
+// Blockquote
+
+blockquote {
+  border-left: 1px solid #ddd;
+  color: #777;
+  font-style: italic;
+  margin: 1em 2em;
+  padding-left: 1em;
+  text-align: left;
+}
+
+blockquote cite {
+  color: #555;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.71429;
+}
+
+blockquote cite:before { content: "\2014 \0020"; }
+
+blockquote cite a { color: #555; }
+
+blockquote cite a:visited { color: #555; }
+
+blockquote.blockquote-reverse {
+  border-left: none;
+  border-right: 1px solid #ddd;
+  padding: 0 1em 0 0;
+  text-align: right;
+}
+
+.alert {
+  color: $light;
+}
+.alert_author {
+  color: $bright;
+}
 

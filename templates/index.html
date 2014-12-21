@@ -8,17 +8,6 @@
               <h1 class="float-left">Sages of Twilight | Hub</h1>
         </div>
         <div class="column-6">
-            <div class="">
-                <nav class="nav-responsive">
-                    <ul class="list-inline">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Staff</a></li>
-                        <li><a href="#">Games</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
         </div>
     </div>
 {% endblock %}
@@ -26,9 +15,27 @@
 {% block content %}
     <div class="row">
         <div class="main">
-            <div class="column-11 content stripes_large">test</div>
-            <div class="column-5 sidebar">
-                <div>
+            <div class="column-12 content night striped_top">
+                <blockquote class="alert">
+                    <p>This SoT hub is still being developed therefore login/signup is disabled as we continue testing. We appreciate your patience as we work to provide an awesome user experience! </p>
+
+                    <cite class="alert_author">Sadin, Project Lead</cite>
+                </blockquote>
+            </div>
+            <div class="column-4 sidebar">
+                <div class="section">
+                    <form class="login_sidebar night striped_top">
+                            <div class="form-item">
+                                <label for="name">Username:</label>
+                                <input type="text" name="name" placeholder="" />
+                            </div>
+                            <div class="form-item">
+                                <label for="pwd">Password:</label>
+                                <input type="password" name="pwd" placeholder="" />
+                            </div>
+                    </form>
+                </div>
+                <div class="section">
                     <ul class="list-unstyled ">
                         <li><a class="btn btn-large twilight" href="#">Home</a></li>
                         <li><a class="btn btn-large almost-twilight" href="#">About</a></li>

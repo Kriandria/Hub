@@ -11,7 +11,6 @@ def index():
 
     lobby_ip = '50.116.56.173:25565'
 
-
     # Fetch Server Data
 
     server = MinecraftServer.lookup(lobby_ip)
@@ -22,6 +21,8 @@ def index():
     lobby_players = status.players.online
 
     return render_template("index.html", count=lobby_players)
+
+
 # @app.route('/mc/<arg1>')
 # def mc(arg1):
 #
@@ -33,4 +34,4 @@ def index():
 #
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=int("3000"), debug=True)
+    app.run(host="0.0.0.0", port=int("80"), debug=True)
